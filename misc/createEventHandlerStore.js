@@ -27,15 +27,14 @@ const createEventHandlerStore = () => {
     	// iterate our entries, so we can iterate our Map key value pairs
       for (let i = 0; i < entries.length; i++) {
       	// get our handler using our entry
-      	const handler = store.get(entries[i]);
 
-        entries[i].target.removeEventListener(entries[i].event, handler);
+        entries[i].target.removeEventListener(entries[i].event, store.get(entries[i]));
       }
       // clear entries
       entries = [];
     },
     store,
   ]
-}
+} 
 
-// USAGE: https://jsfiddle.net/mgcpes0w/2/
+// USAGE: https://jsfiddle.net/mgcpes0w/7/
