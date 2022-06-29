@@ -10,12 +10,19 @@ const createEventHandlerStore = () => {
       entries.push(entry);
       target.addEventListener(event, handler);
     },
+
     // remove handler
     (target, event) => {
-      const handler = store.get({ target, event });
-      target.removeEventListener(event, handler);
-      store.delete({ target, event });
+    	for (let i = 0; i < entries.length; i++) {
+      	if (JSON.stringify({ target,event }) === JSON.stringify(entries[i])) {
+        	console.log(store.get(entries[i]));
+          target.removeEventListener(event, store.get(entries[i]));
+          store.delete(entries[i]);
+        }
+     	}
+      
     },
+    
     // remove all handlers
     () => {
     	// iterate our entries, so we can iterate our WeakMap key value pairs
