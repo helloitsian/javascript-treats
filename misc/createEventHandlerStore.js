@@ -1,5 +1,5 @@
 const createEventHandlerStore = () => {
-  const store = new WeakMap();
+  const store = new Map();
   let entries = [];
 
   return [
@@ -14,7 +14,7 @@ const createEventHandlerStore = () => {
     (target, event) => {
       const handler = store.get({ target, event });
       target.removeEventListener(event, handler);
-      queue.delete({ target, event });
+      store.delete({ target, event });
     },
     // remove all handlers
     () => {
