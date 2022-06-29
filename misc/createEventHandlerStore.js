@@ -25,7 +25,7 @@ const createEventHandlerStore = () => {
     
     // remove all handlers
     () => {
-    	// iterate our entries, so we can iterate our WeakMap key value pairs
+    	// iterate our entries, so we can iterate our Map key value pairs
       for (let i = 0; i < entries.length; i++) {
       	// get our handler using our entry
       	const handler = store.get(entries[i]);
@@ -38,3 +38,5 @@ const createEventHandlerStore = () => {
     store,
   ]
 }
+
+// USAGE: https://jsfiddle.net/mgcpes0w/2/
